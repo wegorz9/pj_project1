@@ -100,22 +100,27 @@ export default function SearchPage() {
                         onChange={(e) => setSizeMax(e.target.value)}
                     />
 
-                    <div className="flex">
-                        {[1, 2, 3, 4, 5, '6+'].map((num) => (
-                            <button
-                                key={num}
-                                className={`p-2  border rounded ${rooms.includes(num) ? 'bg-blue-500 text-white' : 'bg-white'}`}
-                                onClick={() =>
-                                    setRooms((prev) =>
-                                        prev.includes(num) ? prev.filter((r) => r !== num) : [...prev, num]
-                                    )
-                                }
-                            >
-                                {num}
-                            </button>
-                        ))}
-                        <button className="p-2 border rounded bg-black text-white">Wyszukaj</button>
+                    <div className="flex flex-col gap-2">
+                        <span className="font-medium">liczba pokoji:</span>
+                        <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5, '6+'].map((num) => (
+                                <button
+                                    key={num}
+                                    className={`p-2 border rounded ${rooms.includes(num) ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                    onClick={() =>
+                                        setRooms((prev) =>
+                                            prev.includes(num) ? prev.filter((r) => r !== num) : [...prev, num]
+                                        )
+                                    }
+                                >
+                                    {num}
+                                </button>
+                            ))}
+                            <button className="p-2 border rounded bg-black text-white">Wyszukaj</button>
+
+                        </div>
                     </div>
+
                 </div>
             </header>
             <ApartmentCard apartment={sampleApartment} />;
