@@ -1,6 +1,8 @@
+'use client';
 import Link from "next/link";
 import { User } from "next-auth";
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Navbar(props: { currentPage: number; isLoggedIn: boolean; user: User }) {
     return (
@@ -20,7 +22,7 @@ export default function Navbar(props: { currentPage: number; isLoggedIn: boolean
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
+                <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link className="nav-link active" aria-current="page" href="/rent">
@@ -37,7 +39,8 @@ export default function Navbar(props: { currentPage: number; isLoggedIn: boolean
                                 O nas
                             </Link>
                         </li>
-
+                    </ul>
+                    <ul className="navbar-nav ms-auto">
                         {props.isLoggedIn ? (
                             <li className="nav-item">
                                 <Link className="nav-link" href="/account">
@@ -46,7 +49,7 @@ export default function Navbar(props: { currentPage: number; isLoggedIn: boolean
                             </li>
                         ) : (
                             <li className="nav-item">
-                                <Link className="nav-link btn btn-primary text-white" href="/login">
+                                <Link className="btn btn-primary" href="/login">
                                     Zaloguj się
                                 </Link>
                             </li>

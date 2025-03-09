@@ -3,6 +3,35 @@
 import Navbar from "~/components/Navbar";
 import {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ApartmentCard from "~/components/ApartmentCard";
+const sampleApartment = {
+    images: [
+        "https://tinyurl.com/4457spk8",
+        "https://tinyurl.com/2uz9mva6",
+        "https://tinyurl.com/3pppe3d2",
+    ],
+    price: 9000,
+    rent: 1500,
+    title: "Dom wolnostojący al. Lipowa, Wrocław",
+    location: "al. Lipowa, Borek, Krzyki, Wrocław, dolnośląskie",
+    rooms: 5,
+    meterage: 200,
+    longDescription: `
+        Zapraszamy do zapoznania się z ofertą wyjątkowego domu wolnostojącego położonego przy al. Lipowej w dzielnicy Borek, Krzyki, Wrocław. 
+        Ten przestronny dom o powierzchni 200 m² składa się z 5 pokoi, oferując idealne warunki zarówno dla dużej rodziny, jak i osób ceniących przestrzeń i komfort. 
+
+        Dom jest w pełni umeblowany i gotowy do zamieszkania — wnętrza zostały urządzone z dbałością o każdy szczegół, łącząc elegancję z funkcjonalnością. 
+        Atutem nieruchomości jest duży ogród, zapewniający prywatność i przestrzeń do relaksu, a także taras — doskonałe miejsce na poranną kawę czy letnie spotkania z przyjaciółmi. 
+
+        Lokalizacja nieruchomości to kolejna zaleta — spokojna i zielona okolica, a jednocześnie doskonałe połączenie komunikacyjne z centrum Wrocławia. 
+        W pobliżu znajdują się sklepy, szkoły, restauracje oraz tereny rekreacyjne, które ułatwią codzienne życie.
+
+        Cena: 9000 PLN  
+        Czynsz: 1500 PLN  
+        Zapraszamy do kontaktu oraz na prezentację tej wyjątkowej nieruchomości.  
+    `,
+    url: "https://example.com/oferta",
+};
 
 
 export default function SearchPage() {
@@ -71,11 +100,11 @@ export default function SearchPage() {
                         onChange={(e) => setSizeMax(e.target.value)}
                     />
 
-                    <div className="flex gap-1">
+                    <div className="flex">
                         {[1, 2, 3, 4, 5, '6+'].map((num) => (
                             <button
                                 key={num}
-                                className={`p-2 border rounded ${rooms.includes(num) ? 'bg-blue-500 text-white' : 'bg-white'}`}
+                                className={`p-2  border rounded ${rooms.includes(num) ? 'bg-blue-500 text-white' : 'bg-white'}`}
                                 onClick={() =>
                                     setRooms((prev) =>
                                         prev.includes(num) ? prev.filter((r) => r !== num) : [...prev, num]
@@ -85,10 +114,14 @@ export default function SearchPage() {
                                 {num}
                             </button>
                         ))}
+                        <button className="p-2 border rounded bg-black text-white">Wyszukaj</button>
                     </div>
-                    <button className="p-2 border rounded bg-black text-white">Wyszukaj</button>
                 </div>
             </header>
+            <ApartmentCard apartment={sampleApartment} />;
+            <ApartmentCard apartment={sampleApartment} />;
+            <ApartmentCard apartment={sampleApartment} />;
+            <ApartmentCard apartment={sampleApartment} />;
         </div>
     );
 }
