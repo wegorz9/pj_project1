@@ -16,13 +16,19 @@ const sampleProperty = {
     location: "al. Lipowa, Borek, Krzyki, Wrocław, dolnośląskie",
     rooms: 5,
     meterage: 250,
-    description: `
-        Oferujemy luksusowy dom o powierzchni 250 m², położony w prestiżowej okolicy Borka. 
-        Nieruchomość składa się z 5 przestronnych pokoi, nowoczesnej kuchni, 
-        dwóch łazienek oraz pięknego ogrodu. Idealna propozycja dla rodzin szukających komfortu i prywatności. 
-        
-        Cena: 1 500 000 PLN  
-        Zapraszamy na prezentację!
+    longDescription: `
+        Zapraszamy do zapoznania się z ofertą wyjątkowego domu wolnostojącego położonego przy al. Lipowej w dzielnicy Borek, Krzyki, Wrocław. 
+        Ten przestronny dom o powierzchni 200 m² składa się z 5 pokoi, oferując idealne warunki zarówno dla dużej rodziny, jak i osób ceniących przestrzeń i komfort. 
+
+        Dom jest w pełni umeblowany i gotowy do zamieszkania — wnętrza zostały urządzone z dbałością o każdy szczegół, łącząc elegancję z funkcjonalnością. 
+        Atutem nieruchomości jest duży ogród, zapewniający prywatność i przestrzeń do relaksu, a także taras — doskonałe miejsce na poranną kawę czy letnie spotkania z przyjaciółmi. 
+
+        Lokalizacja nieruchomości to kolejna zaleta — spokojna i zielona okolica, a jednocześnie doskonałe połączenie komunikacyjne z centrum Wrocławia. 
+        W pobliżu znajdują się sklepy, szkoły, restauracje oraz tereny rekreacyjne, które ułatwią codzienne życie.
+
+        Cena: 9000 PLN  
+        Czynsz: 1500 PLN  
+        Zapraszamy do kontaktu oraz na prezentację tej wyjątkowej nieruchomości.  
     `,
     url: "https://example.com/oferta",
 };

@@ -81,7 +81,6 @@ export default function ApartmentCard({ apartment }: ApartmentCardProps) {
                     className="col-md-4 p-4 d-flex justify-content-center align-items-center"
                     onClick={(e) => {
                         e.stopPropagation();
-                        navigateToDetail();
                     }}
                 >
                     <div className="relative rounded-lg overflow-hidden w-100" style={{ maxHeight: '300px' }}>
