@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "~/components/Navbar";
+import Link from "next/link";
 
 interface Reservation {
   id: string;
@@ -149,9 +150,9 @@ const AccountPage = () => {
                               {reservation.price} zł / miesiąc
                             </p>
                             <div className="d-flex justify-content-between">
-                              <a href={`/detail-view?id=${reservation.propertyId}`} className="btn btn-outline-primary">
+                              <Link className="btn btn-outline-primary" aria-current="page" href="/detail-view">
                                 Zobacz szczegóły
-                              </a>
+                                </Link>
                               <button 
                                 className="btn btn-outline-danger"
                                 onClick={() => handleCancelReservation(reservation.id)}
