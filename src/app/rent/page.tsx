@@ -4,6 +4,7 @@ import Navbar from "~/components/Navbar";
 import {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApartmentCard from "~/components/ApartmentCard";
+
 const sampleApartment = {
     images: [
         "https://tinyurl.com/4457spk8",
@@ -30,7 +31,6 @@ const sampleApartment = {
         Czynsz: 1500 PLN  
         Zapraszamy do kontaktu oraz na prezentację tej wyjątkowej nieruchomości.  
     `,
-    url: "https://example.com/oferta",
 };
 
 
