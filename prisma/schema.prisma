@@ -1,0 +1,18 @@
+model Rental {
+  id          Int     @id @default(autoincrement())
+  price       Float
+  rent        Float
+  title       String
+  location    String
+  rooms       Int
+  meterage    Int
+  description String
+  images      RentalImage[]
+}
+
+model RentalImage {
+  id        Int    @id @default(autoincrement())
+  rentalId  Int
+  image     String
+  rental    Rental @relation(fields: [rentalId], references: [id], onDelete: Cascade)
+}
