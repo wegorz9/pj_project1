@@ -13,8 +13,7 @@ interface Apartment {
     location: string;
     rooms: number;
     meterage: number;
-    longDescription: string;
-    url?: string;
+    description: string;
     images: string[];
 }
 
@@ -32,7 +31,7 @@ export default function ApartmentCard({ apartment }: ApartmentCardProps) {
         if (contentRef.current) {
             setIsOverflowing(contentRef.current.scrollHeight > 96);
         }
-    }, [apartment.longDescription]);
+    }, [apartment.description]);
 
     const navigateToDetail = () => {
         router.push(`/detail-view`);
@@ -68,7 +67,7 @@ export default function ApartmentCard({ apartment }: ApartmentCardProps) {
                         }}
                     >
                         <p ref={contentRef} className="whitespace-pre-line">
-                            {apartment.longDescription}
+                            {apartment.description}
                         </p>
 
                         {!isExpanded && isOverflowing && (

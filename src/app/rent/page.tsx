@@ -1,9 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 'use client';
 
 import Navbar from "~/components/Navbar";
 import {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ApartmentCard from "~/components/ApartmentCard";
+import {pool} from "~/app/api/data/data"
+
+// "data:image/jpeg;charset=utf-8;base64,"
+type Apartment ={
+    id: number;
+    images: string[];
+    price: number;
+    rent: number;
+    title: string;
+    location: string;
+    rooms: number;
+    meterage: number;
+    description: string;
+}
 
 const sampleApartment = {
     images: [
@@ -17,7 +32,7 @@ const sampleApartment = {
     location: "al. Lipowa, Borek, Krzyki, Wrocław, dolnośląskie",
     rooms: 5,
     meterage: 200,
-    longDescription: `
+    description: `
         Zapraszamy do zapoznania się z ofertą wyjątkowego domu wolnostojącego położonego przy al. Lipowej w dzielnicy Borek, Krzyki, Wrocław. 
         Ten przestronny dom o powierzchni 200 m² składa się z 5 pokoi, oferując idealne warunki zarówno dla dużej rodziny, jak i osób ceniących przestrzeń i komfort. 
 
@@ -35,6 +50,34 @@ const sampleApartment = {
 
 
 export default function SearchPage() {
+    const apartments: Apartment[] = []
+
+    async function refresh() {
+        try {
+            const result = await pool.query("select id,price,rent,title,location,rooms,meterage,description from rentals");
+
+            for (const row of result.rows) {
+                const result = await pool.query("select image from rental_images where rental_id = $1", 1);
+                apartments.push(
+                    {
+                        id: row.id,
+                        description: row.description,
+                        location: row.location,
+                        meterage: row.meterage,
+                        price: row.price,
+                        rent: row.rent,
+                        rooms: row.rooms,
+                        title: row.title,
+                        images: [...result.rows]
+
+                    }
+                );
+            }
+        } catch (e) {
+
+        }
+    }
+
     const [category, setCategory] = useState('Domy');
     const [location, setLocation] = useState('Wrocław');
     const [priceMin, setPriceMin] = useState('');
@@ -123,10 +166,8 @@ export default function SearchPage() {
 
                 </div>
             </header>
-            <ApartmentCard apartment={sampleApartment} />;
-            <ApartmentCard apartment={sampleApartment} />;
-            <ApartmentCard apartment={sampleApartment} />;
-            <ApartmentCard apartment={sampleApartment} />;
+            {apartments.map((e)=><ApartmentCard key={e.id} apartment={e}/>)}
+
         </div>
     );
 }
